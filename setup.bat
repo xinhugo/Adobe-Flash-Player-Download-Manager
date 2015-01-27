@@ -93,20 +93,20 @@ exit
 
 :Download_1
 if not exist install_flash_player_ax.exe.aria2 if exist install_flash_player_ax.exe del install_flash_player_ax.exe
-%aria2c% -c -s16 -x16 -k1m --remote-time=true --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html --parameterized-uri=true http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player_ax.exe
+%aria2c% -c -s16 -x16 -k1m --remote-time=true --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player_ax.exe
 goto Setup
 
 :Download_2
 if not exist install_flash_player.exe.aria2 if exist install_flash_player.exe del install_flash_player.exe
 rem if exist install_flash_player.exe del install_flash_player.exe
-%aria2c% -c -s16 -x16 -k1m --remote-time=true --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html --parameterized-uri=true http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player.exe
+%aria2c% -c -s16 -x16 -k1m --remote-time=true --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player.exe
 goto Setup
 
 :Download_3
 if not exist install_flash_player_ax.exe.aria2 if exist install_flash_player_ax.exe del install_flash_player_ax.exe
 if not exist install_flash_player.exe.aria2 if exist install_flash_player.exe del install_flash_player.exe
-%aria2c% -c -s16 -x16 -k1m --remote-time=true --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html --parameterized-uri=true http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player_ax.exe
-%aria2c% -c -s16 -x16 -k1m --remote-time=true --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html --parameterized-uri=true http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player.exe
+%aria2c% -c -s16 -x16 -k1m --remote-time=true --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player_ax.exe
+%aria2c% -c -s16 -x16 -k1m --remote-time=true --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player.exe
 goto Setup
 
 :Setup
