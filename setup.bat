@@ -38,6 +38,9 @@ echo     即将 下载/安装 Adobe Flash Player......
 echo.&echo.
 echo     1)下载：Adobe Flash Player
 echo     2)安装：Adobe Flash Player
+echo.
+echo     3)删除已下载的安装文件（避免不同文件错误地断点续传）
+echo.
 echo.&echo.
 echo     致谢及声明：调用了 aria2 从 HTTP 服务器下载数据。
 echo.&echo.
@@ -49,6 +52,7 @@ SET /P ST=   请输入数字：
 echo. 
 if /I "%ST%"=="1" goto Download-Tool
 if /I "%ST%"=="2" goto Setup
+if /I "%ST%"=="3" goto Delete
 echo    无效选择，按任意键退出！
 pause >nul
 exit
@@ -88,22 +92,26 @@ pause >nul
 exit
 
 :Download_1
-rem if exist install_flash_player_ax.exe del install_flash_player_ax.exe
+if not exist install_flash_player_ax.exe.aria2 if exist install_flash_player_ax.exe del install_flash_player_ax.exe
 %aria2c% -c -s16 -x16 -k1m --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html --parameterized-uri=true http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player_ax.exe
 goto Setup
 
 :Download_2
+if not exist install_flash_player.exe.aria2 if exist install_flash_player.exe del install_flash_player.exe
 rem if exist install_flash_player.exe del install_flash_player.exe
 %aria2c% -c -s16 -x16 -k1m --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html --parameterized-uri=true http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player.exe
 goto Setup
 
 :Download_3
-rem if exist install_flash_player_ax.exe del install_flash_player_ax.exe &if exist install_flash_player.exe del install_flash_player.exe
+if not exist install_flash_player_ax.exe.aria2 if exist install_flash_player_ax.exe del install_flash_player_ax.exe
+if not exist install_flash_player.exe.aria2 if exist install_flash_player.exe del install_flash_player.exe
 %aria2c% -c -s16 -x16 -k1m --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html --parameterized-uri=true http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player_ax.exe
 %aria2c% -c -s16 -x16 -k1m --enable-mmap --file-allocation=falloc --disk-cache=64M --header=Referer:http://helpx.adobe.com/flash-player/kb/installation-problems-flash-player-windows.html --parameterized-uri=true http://fpdownload.macromedia.com/pub/flashplayer/latest/help/install_flash_player.exe
 goto Setup
 
 :Setup
+rem if exist install_flash_player_ax.exe.1 del install_flash_player_ax.exe &ren install_flash_player_ax.exe.1 install_flash_player_ax.exe
+rem if exist install_flash_player.exe.1 del install_flash_player.exe &ren install_flash_player.exe.1 install_flash_player.exe
 cls
 echo.
 echo     即将 安装 Adobe Flash Player......
@@ -149,8 +157,12 @@ if not exist install_flash_player.exe echo 未找到 install_flash_player.exe，请下
 start install_flash_player_ax.exe /install
 start /wait install_flash_player.exe /install
 
-
 :Finish
 cls
 echo.&echo    安装完成，按任意键退出。
-pause >nul
+pause >nul &exit
+
+:Delete
+if exist install_flash_player* del install_flash_player*
+echo.&echo    处理完成，按任意键返回。
+pause >nul &goto Main

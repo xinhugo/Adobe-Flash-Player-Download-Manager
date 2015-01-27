@@ -9,7 +9,7 @@ A downloader based on batch and Aria2.
 下载/安装 Adobe-Flash-Player 插件
 
 ### Feature
-多线程下载，适应中国（对外）网络速度。
+多线程下载、断点续传，适应中国（对外）网络。
 
 ### Usage
 退出所有可能使用 Flash 的程序，以管理员身份运行 setup.bat ，按提示操作即可。
