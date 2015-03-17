@@ -44,7 +44,7 @@ echo.
 echo.&echo.
 echo     致谢及声明：调用了 aria2 从 HTTP 服务器下载数据。
 echo.&echo.
-echo     版本：2015/1/27；开发：Hugo；联系：hugox.chan@gmail.com
+echo     版本：2015/3/17；开发：Hugo；联系：hugox.chan@gmail.com
 echo.
 echo ---------------------------------------------------------------------------
 echo.
@@ -58,9 +58,9 @@ pause >nul
 exit
 
 :Download-Tool
-if exist "aria2\aria2c.exe" set aria2c="aria2\aria2c.exe" &goto Download
+if exist "Tools\aria2\aria2c.exe" set aria2c="Tools\aria2\aria2c.exe" &goto Download
 if exist "D:\软件库\绿色工具\网络工具\上传下载\aria2\x64\aria2c.exe" set aria2c="D:\软件库\绿色工具\网络工具\上传下载\aria2\x64\aria2c.exe"
-if not exist "aria2\aria2c.exe" if not exist "D:\软件库\绿色工具\网络工具\上传下载\aria2\x64\aria2c.exe"  echo.&echo.&echo.&echo.&echo.&echo.&echo                                    缺少 aria2，请重新下载。&echo.&echo.&echo.&echo.&echo                                         按任意键退出&pause>nul& exit
+if not exist "Tools\aria2\aria2c.exe" if not exist "D:\软件库\绿色工具\网络工具\上传下载\aria2\x64\aria2c.exe"  echo.&echo.&echo.&echo.&echo.&echo.&echo                                    缺少 aria2，请重新下载。&echo.&echo.&echo.&echo.&echo                                         按任意键退出&pause>nul& exit
 
 :Download
 cls
@@ -77,7 +77,7 @@ echo     4)返回主菜单
 echo.&echo.
 echo     致谢及声明：调用了 aria2 从 HTTP 服务器下载数据。
 echo.&echo.
-echo     版本：2015/1/27；开发：Hugo；联系：hugox.chan@gmail.com
+echo     版本：2015/3/17；开发：Hugo；联系：hugox.chan@gmail.com
 echo.
 echo ---------------------------------------------------------------------------
 echo.
@@ -124,7 +124,7 @@ echo     4)返回主菜单
 echo.&echo.
 echo     致谢及声明：调用了 aria2 从 HTTP 服务器下载数据。
 echo.&echo.
-echo     版本：2015/1/27；开发：Hugo；联系：hugox.chan@gmail.com
+echo     版本：2015/3/17；开发：Hugo；联系：hugox.chan@gmail.com
 echo.
 echo ---------------------------------------------------------------------------
 echo.
