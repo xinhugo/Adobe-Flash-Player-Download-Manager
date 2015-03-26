@@ -3,15 +3,29 @@ title Adobe Flash Player Download Manager
 PUSHD %~dp0
 cd /d "%~dp0"
 
-:Permission check
-if "%PROCESSOR_ARCHITECTURE%" == "AMD64" (set SystemPath = %SystemRoot%\SysWOW64) else (set SystemPath = %SystemRoot%\system32)
-::rd "%SystemPath%\Test_Permissions" > nul 2 > nul
-::md "%SystemPath%\Test_Permissions" 2 > nul || (echo Require Administrator Permission. && pause > nul && Exit)
-::rd "%SystemPath%\Test_Permissions" > nul 2 > nul
-del /f /q %SystemPath%\TestPermission.log
-echo "Permission check." >> %SystemPath%\TestPermission.log
-if not exist %SystemPath%\TestPermission.log (echo Require Administrator Permission. && pause > nul && Exit)
-del /f /q %SystemPath%\TestPermission.log
+:: BatchGotAdmin
+:-------------------------------------
+REM  --> Check for permissions
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+
+REM --> If error flag set, we do not have admin.
+if '%errorlevel%' NEQ '0' (
+    echo Requesting administrative privileges...
+    goto UACPrompt
+) else ( goto gotAdmin )
+
+:UACPrompt
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+    echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
+
+    "%temp%\getadmin.vbs"
+    exit /B
+
+:gotAdmin
+    if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
+    pushd "%CD%"
+    CD /D "%~dp0"
+:--------------------------------------
 
 :Ver
 Ver|Find /I "5.1" > nul 2>nul 2>nul
