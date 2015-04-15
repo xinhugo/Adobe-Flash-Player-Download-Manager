@@ -3,7 +3,9 @@
 A downloader based on batch and Aria2.
 
 ### Beta
-本分支 Beta 为 Adobe-Flash-Player-Download-Manager 项目的测试版本，可能存在未知问题，欢迎反馈。**源代码用记事本即可查阅。**
+本分支 Beta 为 Adobe-Flash-Player-Download-Manager 项目的**测试**分支，可能存在未知问题，欢迎反馈。**源代码用记事本即可查阅。**
+
+最新发行版：https://github.com/xinhugo/Adobe-Flash-Player-Download-Manager/releases/latest
 
 ### Summary
 下载/安装 Adobe-Flash-Player 插件
