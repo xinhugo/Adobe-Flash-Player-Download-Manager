@@ -58,7 +58,7 @@ echo.
 echo.&echo.
 echo     致谢及声明：调用了 aria2 从 HTTP 服务器下载数据。
 echo.&echo.
-echo     版本：2015/3/17；开发：Hugo；联系：hugox.chan@gmail.com
+echo     版本：2015/4/17；开发：Hugo；联系：hugox.chan@gmail.com
 echo.
 echo ---------------------------------------------------------------------------
 echo.
@@ -91,7 +91,7 @@ echo     4)返回主菜单
 echo.&echo.
 echo     致谢及声明：调用了 aria2 从 HTTP 服务器下载数据。
 echo.&echo.
-echo     版本：2015/3/17；开发：Hugo；联系：hugox.chan@gmail.com
+echo     版本：2015/4/17；开发：Hugo；联系：hugox.chan@gmail.com
 echo.
 echo ---------------------------------------------------------------------------
 echo.
@@ -124,8 +124,14 @@ if not exist install_flash_player.exe.aria2 if exist install_flash_player.exe de
 goto Setup
 
 :Setup
-rem if exist install_flash_player_ax.exe.1 del install_flash_player_ax.exe &ren install_flash_player_ax.exe.1 install_flash_player_ax.exe
-rem if exist install_flash_player.exe.1 del install_flash_player.exe &ren install_flash_player.exe.1 install_flash_player.exe
+echo for each ps in getobject("winmgmts://./root/cimv2:win32_process").instances_>ps.vbs 
+echo wscript.echo ps.handle^&vbtab^&ps.name^&vbtab^&ps.executablepath>>ps.vbs 
+echo next>>ps.vbs
+cscript //nologo ps.vbs |Find /I "%SystemRoot%\system32\Macromed\Flash\Flash"
+If "%ERRORLEVEL%"=="0" (goto Prompt)
+cscript //nologo ps.vbs |Find /I "%SystemRoot%\SysWOW64\Macromed\Flash\Flash"
+If "%ERRORLEVEL%"=="0" (goto Prompt)
+if exist ps.vbs del ps.vbs
 cls
 echo.
 echo     即将 安装 Adobe Flash Player......
@@ -138,7 +144,7 @@ echo     4)返回主菜单
 echo.&echo.
 echo     致谢及声明：调用了 aria2 从 HTTP 服务器下载数据。
 echo.&echo.
-echo     版本：2015/3/17；开发：Hugo；联系：hugox.chan@gmail.com
+echo     版本：2015/4/17；开发：Hugo；联系：hugox.chan@gmail.com
 echo.
 echo ---------------------------------------------------------------------------
 echo.
@@ -179,4 +185,9 @@ pause >nul &exit
 :Delete
 if exist install_flash_player* del install_flash_player*
 echo.&echo    处理完成，按任意键返回。
+pause >nul &goto Main
+
+:Prompt
+if exist ps.vbs del ps.vbs
+echo.&echo Flash 正在运行，退出后才能配置它。&echo.&echo 按任意键返回。
 pause >nul &goto Main
